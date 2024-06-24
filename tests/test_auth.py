@@ -1,5 +1,5 @@
 import pytest 
-from flaskr import g, session
+from flask import g, session
 from flaskr.db import get_db
 
 def test_register(client, app):
@@ -29,7 +29,7 @@ def test_register_validate_input(client, username, password, message):
 def test_login(client, auth):
 	assert client.get('/auth/login').status_code == 200
 	response = auth.login()
-	assert responde.headers["Location"] == "/"
+	assert response.headers["Location"] == "/"
 
 	with client:
 		client.get('/')
